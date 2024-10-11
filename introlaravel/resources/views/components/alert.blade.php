@@ -1,3 +1,7 @@
-<div>
-    <!-- Be present above all else. - Naval Ravikant -->
+
+<div class="container mt-4">
+<div class="alert alert-{{$tipo}}" role="alert">
+    Soy un alert {{$slot}}
+</div>
+
 </div>
