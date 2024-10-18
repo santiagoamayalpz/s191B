@@ -21,3 +21,5 @@ Route::view('/formulario','formulario')->name('formu');
 Route::view('/consultar','clientes')->name('consulta'); */
 
 Route::view('/component','componentes')->name('rutacomponent');
+
+Route::post('/enviarCliente',[controladorVistas::class, 'procesaCliente'])->name('rutaenviar');
