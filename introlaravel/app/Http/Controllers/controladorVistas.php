@@ -19,6 +19,13 @@ class controladorVistas extends Controller
     }
 
     public function procesaCliente(Request $peticion){
+
+        $validacion= $peticion->validate([ 
+            'txtnombre'=> 'required|min:3|max:20',
+            'txtapellido'=> 'required',
+            'txtcorreo'=> 'required|email',
+            'txttelefono'=> 'required|numeric',
+        ]);
         
         /* redireccion usando la ruta */
         //return redirect('/');
