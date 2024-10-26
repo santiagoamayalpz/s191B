@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\validadorCliente;
 
 class controladorVistas extends Controller
 {
@@ -18,14 +19,7 @@ class controladorVistas extends Controller
         return view('clientes'); 
     }
 
-    public function procesaCliente(Request $peticion){
-
-        $validacion= $peticion->validate([ 
-            'txtnombre'=> 'required|min:3|max:20',
-            'txtapellido'=> 'required',
-            'txtcorreo'=> 'required|email',
-            'txttelefono'=> 'required|numeric',
-        ]);
+    public function procesaCliente(validadorCliente $peticion){
         
         /* redireccion usando la ruta */
         //return redirect('/');
