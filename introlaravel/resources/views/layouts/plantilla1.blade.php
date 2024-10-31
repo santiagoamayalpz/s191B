@@ -22,11 +22,13 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <!-- <a class="nav-link active" aria-current="page" href="/#">Registro Clientes</a> -->
-          <a class="nav-link {{ request()->routeIs('formu')?"text-warnning":""}}" aria-current="page" href="/formulario">Registro Clientes</a>
+          <!-- <a class="nav-link {{ request()->routeIs('formu')?"text-warnning":""}}" aria-current="page" href="/formulario">Registro Clientes</a> -->
+          <a class="nav-link {{ request()->routeIs('formu')?"text-warning":""}}" href="{{ route('formu') }}"> {{ __('Registro Clientes')}}</a>
         </li>
         <li class="nav-item">
           <!-- <a class="nav-link" href="/consultar">Consultar Clientes</a> -->
-          <a class="nav-link {{ request()->routeIs('consulta')?"text-success":""}}" aria-current="page" href="/consultar">Consultar Clientes</a>
+          <!-- <a class="nav-link {{ request()->routeIs('consulta')?"text-success":""}}" aria-current="page" href="/consultar">Consultar Clientes</a> -->
+          <a class="nav-link {{ request()->routeIs('consulta')?"text-success":""}}" href="{{ route('consulta') }}"> {{ __('Consultar Clientes')}}</a>
         </li>
       </ul>
     </div>
