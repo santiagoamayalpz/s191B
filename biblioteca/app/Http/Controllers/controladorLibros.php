@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\validadorLibros;
 
 class controladorLibros extends Controller
 {
@@ -16,21 +17,12 @@ class controladorLibros extends Controller
         return view('registro');
     }
 
-    public function guardar(Request $request)
+    public function guardar(validadorLibros $peticion)
     {
-        $request->validate([
-            'isbn' => 'required|numeric|min_digits:13',
-            'titulo' => 'required|string|max:150',
-            'autor' => 'required|string',
-            'paginas' => 'required|integer|min:1',
-            'anio' => 'required|integer|between:1000,' . date('Y'),
-            'editorial' => 'required|string',
-            'email' => 'required|email', 
-            ]);
     // Aquí puedes guardar el libro en la base de datos o realizar otra acción
 
     // Mensaje de éxito con Alertify
-    return back()->with('success', "Todo correcto: Libro '{$request->titulo}' guardado");
+    return back()->with('success', "Todo correcto: Libro '{$peticion->titulo}' guardado");
     }
 }
 
