@@ -15,3 +15,4 @@ Route::get('/formulario-recorrido/{tipo}', function ($tipo) { return view('formu
 
 Route::post('/guardar-recorrido', [RecorridoController::class, 'guardarRecorrido'])->name('guardar_recorrido');
 
+Route::get('/formulario-agua-potable', function () { return view('agua_potable'); })->name('formulario_agua_potable');

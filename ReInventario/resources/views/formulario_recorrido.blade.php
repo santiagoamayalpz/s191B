@@ -10,57 +10,14 @@
 
         <div class="form-group mt-3">
             <label>Agua Potable</label>
-            <select class="form-control" name="agua_potable">
+            <select class="form-control" name="agua_potable" id="aguaPotableSelect">
                 <option value="realizado">Realizado</option>
                 <option value="pendiente">Pendiente</option>
                 <option value="observacion">Observación</option>
             </select>
         </div>
 
-        <div class="form-group mt-3">
-            <label>Agua Caliente</label>
-            <select class="form-control" name="agua_caliente">
-                <option value="realizado">Realizado</option>
-                <option value="pendiente">Pendiente</option>
-                <option value="observacion">Observación</option>
-            </select>
-        </div>
-
-        <div class="form-group mt-3">
-            <label>Gases Medicinales</label>
-            <select class="form-control" name="gases_medicinales">
-                <option value="realizado">Realizado</option>
-                <option value="pendiente">Pendiente</option>
-                <option value="observacion">Observación</option>
-            </select>
-        </div>
-
-        <div class="form-group mt-3">
-            <label>Eléctrico</label>
-            <select class="form-control" name="electrico">
-                <option value="realizado">Realizado</option>
-                <option value="pendiente">Pendiente</option>
-                <option value="observacion">Observación</option>
-            </select>
-        </div>
-
-        <div class="form-group mt-3">
-            <label>Aire Acondicionado</label>
-            <select class="form-control" name="aire_acondicionado">
-                <option value="realizado">Realizado</option>
-                <option value="pendiente">Pendiente</option>
-                <option value="observacion">Observación</option>
-            </select>
-        </div>
-
-        <div class="form-group mt-3">
-            <label>Sistema Contra Incendios</label>
-            <select class="form-control" name="sistema_contra_incendios">
-                <option value="realizado">Realizado</option>
-                <option value="pendiente">Pendiente</option>
-                <option value="observacion">Observación</option>
-            </select>
-        </div>
+        <!-- Otros campos del formulario aquí... -->
 
         <div class="form-group mt-3">
             <label>Observaciones</label>
@@ -75,5 +32,12 @@
         <button type="submit" class="btn btn-primary mt-3">Finalizar recorrido</button>
     </form>
 </div>
-@endsection
 
+<script>
+    document.getElementById('aguaPotableSelect').addEventListener('change', function() {
+        if (this.value === 'realizado' || this.value === 'pendiente' || this.value === 'observacion') {
+            window.location.href = "{{ route('formulario_agua_potable') }}"; // Redirige a la vista de Agua Potable
+        }
+    });
+</script>
+@endsection
