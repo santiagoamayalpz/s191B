@@ -19,10 +19,15 @@
       </div>
 
       <div class="card-footer text-muted">
-          <button type="submit" class="btn btn-warning btn-sm"> Actualizar </button>
-          <button type="submit" class="btn btn-danger btn-sm"> Eliminar </button>
+            <a href="{{ route('editcliente', $cliente->id) }}" class="btn btn-warning btn-sm">Actualizar</a>
+          
+            {{-- Formulario para eliminar con confirmación --}}
+            <form action="{{ route('destroycliente', $cliente->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estas seguro de que desea eliminar este cliente?')">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
       </div>
-
   </div>
 @endforeach
 </div>

@@ -31,3 +31,9 @@ Route::post('/cliente',[clienteController::class, 'store'])->name('rutaenviar');
 Route::get('/',[clienteController::class,'home'])->name('inicio');
 /* Route::get('/formulario',[controladorVistas::class,'insert'])->name('formu'); */
 Route::get('/cliente',[clienteController::class,'index'])->name('consulta');
+
+Route::get('/cliente/{id}/edit', [clienteController::class, 'edit'])->name('editcliente');
+
+Route::put('/cliente/{id}', [clienteController::class, 'update'])->name('updatecliente');
+
+Route::delete('/cliente/{id}', [clienteController::class, 'destroy'])->name('destroycliente');

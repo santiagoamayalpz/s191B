@@ -60,7 +60,13 @@ class clienteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cliente = DB::table('cliente')->where('id', $id)->first();
+
+        if (!$cliente) {
+        return redirect()->route('consulta')->with('error', 'Cliente no encontrado.');
+        }
+
+        return view('formulario', compact('cliente'));
     }
 
     /**
@@ -68,7 +74,31 @@ class clienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validación de los datos ingresados
+        $request->validate([
+        'txtnombre' => 'required|string|max:255',
+        'txtapellido' => 'required|string|max:255',
+        'txtcorreo' => 'required|email|max:255',
+        'txttelefono' => 'required|numeric',
+        ]);
+
+        // Actualizar los datos del cliente en la base de datos
+        $updated = DB::table('cliente')
+        ->where('id', $id)
+        ->update([
+            "nombre" => $request->input('txtnombre'),
+            "apellido" => $request->input('txtapellido'),
+            "correo" => $request->input('txtcorreo'),
+            "telefono" => $request->input('txttelefono'),
+            "updated_at" => Carbon::now(),
+        ]);
+
+        // Confirmar actualización
+        if ($updated) {
+        return redirect()->route('consulta')->with('exito', 'Cliente actualizado correctamente.');
+        } else {
+        return redirect()->route('consulta')->with('error', 'No se pudo actualizar el cliente.');
+        }
     }
 
     /**
@@ -76,6 +106,14 @@ class clienteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Intentar eliminar el cliente
+        $deleted = DB::table('cliente')->where('id', $id)->delete();
+
+        // Confirmar eliminación
+        if ($deleted) {
+        return redirect()->route('consulta')->with('exito', 'Cliente eliminado correctamente.');
+        } else {
+        return redirect()->route('consulta')->with('error', 'No se pudo eliminar el cliente.');
+        }
     }
 }
